@@ -21,10 +21,10 @@ public protocol ActivityIndicatable {
 }
 
 public extension ActivityIndicatable where Self: UIViewController {
-    func didProgressComplete() {
+    public func didProgressComplete() {
     }
     
-    func updateVisibilityOfActivityIndicator(activityIndicator: UIView) {
+    public func updateVisibilityOfActivityIndicator(activityIndicator: UIView) {
         if isProgressing() {
             if !view.subviews.contains(activityIndicator) {
                 view.addSubview(activityIndicator)
