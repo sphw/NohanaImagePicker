@@ -51,9 +51,6 @@ class AssetDetailListViewController: AssetListViewController {
         view.hidden = true
         coordinator.animateAlongsideTransition(nil) { _ in
             self.view.invalidateIntrinsicContentSize()
-            for subView in self.view.subviews {
-                subView.invalidateIntrinsicContentSize()
-            }
             self.collectionView?.reloadData()
             self.scrollCollectionView(to: indexPath)
             self.view.hidden = false
