@@ -34,6 +34,17 @@ class AssetDetailListViewController: AssetListViewController {
         }
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        if let nohanaImagePickerController = nohanaImagePickerController {
+            setToolbarTitle(nohanaImagePickerController)
+        }
+        view.invalidateIntrinsicContentSize()
+        collectionView?.reloadData()
+        
+        scrollCollectionViewToInitialPosition()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if let nohanaImagePickerController = nohanaImagePickerController {
@@ -75,8 +86,10 @@ class AssetDetailListViewController: AssetListViewController {
         guard photoKitAssetList.count > 0 else {
             return
         }
-        let toIndexPath = NSIndexPath(forItem: indexPath.item, inSection: 0)
-        collectionView?.scrollToItemAtIndexPath(toIndexPath, atScrollPosition: UICollectionViewScrollPosition.CenteredHorizontally, animated: false)
+        dispatch_async(dispatch_get_main_queue()) {
+            let toIndexPath = NSIndexPath(forItem: indexPath.item, inSection: 0)
+            self.collectionView?.scrollToItemAtIndexPath(toIndexPath, atScrollPosition: UICollectionViewScrollPosition.CenteredHorizontally, animated: false)
+        }
     }
     
     override func scrollCollectionViewToInitialPosition() {
