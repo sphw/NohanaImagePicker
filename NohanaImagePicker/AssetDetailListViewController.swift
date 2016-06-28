@@ -34,17 +34,6 @@ class AssetDetailListViewController: AssetListViewController {
         }
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        if let nohanaImagePickerController = nohanaImagePickerController {
-            setToolbarTitle(nohanaImagePickerController)
-        }
-        view.invalidateIntrinsicContentSize()
-        collectionView?.reloadData()
-        
-        scrollCollectionViewToInitialPosition()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         if let nohanaImagePickerController = nohanaImagePickerController {

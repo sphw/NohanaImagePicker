@@ -54,9 +54,7 @@ class AssetListViewController: UICollectionViewController {
         if let nohanaImagePickerController = nohanaImagePickerController {
             setToolbarTitle(nohanaImagePickerController)
         }
-        view.invalidateIntrinsicContentSize()
         collectionView?.reloadData()
-
         scrollCollectionViewToInitialPosition()
     }
     
